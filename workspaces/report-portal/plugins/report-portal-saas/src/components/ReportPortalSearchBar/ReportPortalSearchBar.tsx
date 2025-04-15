@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { ReportPortalDocument } from '@backstage-community/plugin-report-portal-common';
+import { ReportPortalDocument } from '@mrackoa/plugin-report-portal-saas-common';
 import { useApp } from '@backstage/core-plugin-api';
 import { Result } from '@backstage/plugin-search-common';
 import {

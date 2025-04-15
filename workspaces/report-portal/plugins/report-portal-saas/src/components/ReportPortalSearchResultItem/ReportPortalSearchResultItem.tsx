@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ReportPortalDocument } from '@backstage-community/plugin-report-portal-common';
+import { ReportPortalDocument } from '@mrackoa/plugin-report-portal-saas-common';
 import { Link } from '@backstage/core-components';
 import { EntityRefLink } from '@backstage/plugin-catalog-react';
 import { ResultHighlight } from '@backstage/plugin-search-common';

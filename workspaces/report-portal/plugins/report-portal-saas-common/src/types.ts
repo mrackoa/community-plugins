@@ -88,15 +88,14 @@ export type ProjectDetails = {
 
 export type LaunchDetails = {
   owner: string;
-  share: boolean;
   description: string;
   id: number;
   uuid: string;
   name: string;
   number: number;
-  startTime: number;
-  endTime: number;
-  lastModified: number;
+  startTime: string;
+  endTime: string;
+  lastModified: string;
   status: string;
   statistics: {
     executions: {
@@ -111,10 +110,16 @@ export type LaunchDetails = {
         [key: string]: number;
       };
     };
+    attributes: {
+      key: string;
+      value: string;
+    };
+    analysing: any[];
     mode: string;
     approximateDuration: number;
     hasRetries: boolean;
     rerun: boolean;
+    metadata: Record<string, string>;
   };
 };
 

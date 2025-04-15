@@ -42,7 +42,7 @@ import { useApi } from '@backstage/core-plugin-api';
 import {
   ReportPortalSearchResultItem,
   ReportPortalIcon,
-} from '@backstage-community/plugin-report-portal';
+} from '@mrackoa/plugin-report-portal-saas';
 
 const useStyles = makeStyles((theme: Theme) => ({
   bar: {

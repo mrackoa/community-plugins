@@ -41,7 +41,7 @@ import useAsync from 'react-use/lib/useAsync';
 import {
   ProjectListResponse,
   ProjectDetails,
-} from '@backstage-community/plugin-report-portal-common';
+} from '@mrackoa/plugin-report-portal-saas-common';
 
 export const ProjectsPageContent = (props: { host: string }) => {
   const { host } = props;

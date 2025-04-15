@@ -17,7 +17,7 @@ import {
   LaunchDetailsResponse,
   ProjectDetails,
   ProjectListResponse,
-} from '@backstage-community/plugin-report-portal-common';
+} from '@mrackoa/plugin-report-portal-saas-common';
 import { ApiRef, createApiRef } from '@backstage/core-plugin-api';
 
 /** @public */

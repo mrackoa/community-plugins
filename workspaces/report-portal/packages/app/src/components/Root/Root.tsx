@@ -43,7 +43,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import {
   ReportPortalIcon,
   ReportPortalSearchResultItem,
-} from '@backstage-community/plugin-report-portal';
+} from '@mrackoa/plugin-report-portal-saas';
 import { IconComponent } from '@backstage/core-plugin-api';
 import { SearchResult } from '@backstage/plugin-search-react';
 import { CatalogSearchResultListItem } from '@backstage/plugin-catalog';

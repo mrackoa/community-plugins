@@ -25,7 +25,7 @@ import {
   ReportPortalDocument,
   LaunchDetailsResponse,
   ProjectListResponse,
-} from '@backstage-community/plugin-report-portal-common';
+} from '@mrackoa/plugin-report-portal-saas-common';
 import { Readable } from 'stream';
 import { ReportPortalIntegrationConfig } from './types';
 import { CatalogService } from '@backstage/plugin-catalog-node';

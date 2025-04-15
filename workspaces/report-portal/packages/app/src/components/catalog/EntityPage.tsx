@@ -71,7 +71,7 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import {
   isReportPortalAvailable,
   ReportPortalOverviewCard,
-} from '@backstage-community/plugin-report-portal';
+} from '@mrackoa/plugin-report-portal-saas';
 
 const techdocsContent = (
   <EntityTechdocsContent>

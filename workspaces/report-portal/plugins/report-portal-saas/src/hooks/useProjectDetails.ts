@@ -13,29 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 import { useApi } from '@backstage/core-plugin-api';
 
 import { reportPortalApiRef } from '../api';
-import { LaunchDetails } from '@backstage-community/plugin-report-portal-common';
+import { ProjectDetails } from '@mrackoa/plugin-report-portal-saas-common';
 
-export function useLaunchDetails(
+export function useProjectDetails(
   projectId: string,
-  hostName: string,
-  filters: { [key: string]: string | number } | undefined,
-) {
+  host: string,
+): { loading: boolean; projectDetails: ProjectDetails | undefined } {
   const reportPortalApi = useApi(reportPortalApiRef);
-  const [loading, setLoading] = useState(true);
-  const [launchDetails, setLaunchDetails] = useState<LaunchDetails>();
+  const [projectDetails, setProjectDetails] = React.useState<ProjectDetails>();
+  const [loading, setLoading] = React.useState<boolean>(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setLoading(true);
-    reportPortalApi.getLaunchResults(projectId, hostName, filters).then(res => {
-      setLaunchDetails(res.content[0]);
-      setLoading(false);
-    });
-  }, [filters, projectId, hostName, reportPortalApi]);
+    reportPortalApi
+      .getProjectDetails(projectId, host)
+      .then(resp => {
+        setProjectDetails(resp);
+        setLoading(false);
+      })
+      .catch(err => err);
+  }, [projectId, reportPortalApi, host]);
 
-  return { loading, launchDetails };
+  return { loading, projectDetails };
 }

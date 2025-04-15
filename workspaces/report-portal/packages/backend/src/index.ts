@@ -45,9 +45,7 @@ backend.add(
 backend.add(import('@backstage/plugin-search-backend'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs'));
-backend.add(
-  import('@backstage-community/plugin-search-backend-module-report-portal'),
-);
+backend.add(import('@mrackoa/plugin-search-backend-module-report-portal'));
 
-backend.add(import('@backstage-community/plugin-report-portal-backend'));
+backend.add(import('@mrackoa/plugin-report-portal-saas-backend'));
 backend.start();

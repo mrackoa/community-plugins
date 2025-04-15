@@ -33,7 +33,7 @@ import { reportPortalApiRef } from '../../../api';
 import {
   LaunchDetailsResponse,
   PageType,
-} from '@backstage-community/plugin-report-portal-common';
+} from '@mrackoa/plugin-report-portal-saas-common';
 import { catalogApiRef, entityRouteRef } from '@backstage/plugin-catalog-react';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
@@ -49,14 +49,12 @@ type LaunchDetails = {
   passed: number;
   failed: number;
   skipped: number;
-  startTime: number;
+  startTime: string;
 };
 
-const RenderTime = (props: { timeMillis: number }) => {
-  const relativeTime = DateTime.fromMillis(props.timeMillis)
-    .toLocal()
-    .toRelative();
-  const dateTime = DateTime.fromMillis(props.timeMillis).toLocaleString({
+const RenderTime = (props: { timeISO: string }) => {
+  const relativeTime = DateTime.fromISO(props.timeISO).toLocal().toRelative();
+  const dateTime = DateTime.fromISO(props.timeISO).toLocaleString({
     dateStyle: 'short',
     timeStyle: 'medium',
   });
@@ -266,7 +264,7 @@ export const LaunchesPageContent = (props: {
       field: 'startTime',
       width: '25%',
       cellStyle: () => ({ paddingTop: 0, paddingBottom: 0 }),
-      render: row => <RenderTime timeMillis={row.startTime} />,
+      render: row => <RenderTime timeISO={row.startTime} />,
     },
     {
       id: 5,

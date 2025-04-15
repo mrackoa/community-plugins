@@ -18,26 +18,32 @@ import React from 'react';
 import { useApi } from '@backstage/core-plugin-api';
 
 import { reportPortalApiRef } from '../api';
-import { ProjectDetails } from '@backstage-community/plugin-report-portal-common';
+import { ProjectListResponse } from '@mrackoa/plugin-report-portal-saas-common';
 
-export function useProjectDetails(
-  projectId: string,
-  host: string,
-): { loading: boolean; projectDetails: ProjectDetails | undefined } {
+export function useInstanceDetails(host: string, filterType: string) {
   const reportPortalApi = useApi(reportPortalApiRef);
-  const [projectDetails, setProjectDetails] = React.useState<ProjectDetails>();
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [loading, setLoading] = React.useState(true);
+  const [projectListData, setProjectListData] =
+    React.useState<ProjectListResponse>({
+      content: [],
+      page: {
+        number: 1,
+        size: 10,
+        totalElements: 0,
+        totalPages: 1,
+      },
+    });
 
   React.useEffect(() => {
     setLoading(true);
     reportPortalApi
-      .getProjectDetails(projectId, host)
-      .then(resp => {
-        setProjectDetails(resp);
+      .getInstanceDetails(host, { 'filter.eq.type': filterType })
+      .then(res => {
+        setProjectListData(res);
         setLoading(false);
       })
       .catch(err => err);
-  }, [projectId, reportPortalApi, host]);
+  }, [host, reportPortalApi, filterType]);
 
-  return { loading, projectDetails };
+  return { loading, projectListData };
 }
